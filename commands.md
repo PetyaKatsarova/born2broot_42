@@ -6,7 +6,7 @@
  //change pwd:
  sudo passwd pkatsaro
  
- sudo vim /etc/pam.d/common-password
+ sudo vim /etc/pam.d/common-pas
  sudo vim /etc/login.defs // for expiry time
  sudo chage -l username  //check password expire rules
  
@@ -14,8 +14,8 @@
  getent group // check if the group has been created
  
  cut -d: -f1 /etc/passwd // check all local users
-sudo adduser new_username // create a username 
-sudo usermod -aG evaluating your_username
+ sudo adduser new_username // create a username 
+ sudo usermod -aG evaluating your_username
  getent group user42 // check if the user is the group
  groups // to see which groups the user account belongs to
  chage -l your_new_username // to check if the password rules are working in users

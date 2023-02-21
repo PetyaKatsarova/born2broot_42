@@ -1,5 +1,8 @@
-# born2broot_42
+sudo# born2broot_42
 copied info from: https://github.com/pasqualerossi/Born2BeRoot-Guide/blob/main/README.md
+
+
+AppArmor is a security framework in Debian that allows for the confinement of processes to specific resources, such as files or network sockets, in order to limit their potential for causing harm. It provides an additional layer of security to the operating system by defining and enforcing policies that restrict the actions that processes can take, thereby reducing the risk of security vulnerabilities being exploited.
 
 
 **************** CONFIG THE VM ************************
@@ -27,11 +30,11 @@ Lastly type sudo service ssh restart to restart the SSH Service
 ************* Installing and Configuring UFW (Uncomplicated Firewall) ************
 
 First type apt-get install ufw to install UFW
-Type sudo ufw enable to inable UFW
-Type sudo ufw status numbered to check the status of UFW
-Type sudo ufw allow ssh to configure the Rules
-Type sudo ufw allow 4242 to configure the Port Rules
-Lastly Type sudo ufw status numbered to check the status of UFW 4242 Port
+sudo ufw enable to inable UFW
+sudo ufw status numbered to check the status of UFW
+sudo ufw allow ssh to configure the Rules
+sudo ufw allow 4242 to configure the Port Rules
+Lastly Type sudo ufw status numbered // to check the status of UFW 4242 Port
 
 *********** Connecting to SSH ********
 
@@ -39,8 +42,8 @@ Click on your Virtual Machine and select Settings
 Click Network then Adapter 1 then Advanced and then click on Port Forwarding
 Change the Host Port and Guest Port to 4242
 Then head back to your Virtual Machine
-Type sudo systemctl restart ssh to restart your SSH Server
-Type sudo service sshd status to check your SSH Status
+sudo systemctl restart ssh to restart your SSH Server
+sudo service sshd status to check your SSH Status
 Open an iTerm and type the following ssh your_username@127.0.0.1 -p 4242
 In case an error occurs, then type rm ~/.ssh/known_hosts in your iTerm and then retype ssh your_username@127.0.0.1 -p 4242
 Lastly type exit to quit your SSH iTerm Connection
@@ -92,7 +95,7 @@ Defaults    mail_badpass
 Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
 Defaults    badpass_message="Password is wrong, please try again!"
 Defaults    passwd_tries=3
-Defaults    logfile="/var/log/sudo.log"
+Defaults    logfile="/var/log/sudo/sudo.log"
 Defaults    log_input, log_output
 Defaults    requiretty
 
@@ -168,7 +171,7 @@ Now you submit the signature.txt file with the output number in it.
     getent group sudo
     getent group user42
     getent passwd {1000..60000}
-    sudo adduser new username
+
     sudo groupadd groupname
     sudo usermod -aG groupname username
     sudo chage -l username - check password expire rules
@@ -184,7 +187,7 @@ Now you submit the signature.txt file with the output number in it.
     sudo ufw delete rule number
     ssh your_user_id@127.0.0.1 -p 4242 - do this in terminal to show that SSH to port 4242 is working
     // check sudo.log
-    sudo cat /var/log/sudo.log
+    sudo cat /var/log/sudo/sudo.log
     // change password: 
     sudo passwd username
     // sudoers is in 
@@ -205,9 +208,6 @@ If you also want to remove the configuration files for these packages, run the f
 
 apt-get remove --purge mariadb-client-10.5 mariadb-common mariadb-server-10.5
 This will remove the packages and their configuration files, but will not remove the data files stored in the databases. To remove the data files, you will need to manually delete the directories in which they are stored.
-
-
-
 
 pskpetya@gmail.com
 how to check if i have uninstalled lighttpd
@@ -243,9 +243,6 @@ If Apache is installed, you will see output similar to this:
 Copy code
 ii  apache2                         2.4.25-3+deb9u7                amd64        Apache HTTP Server
 If you don't see any output, then Apache is not installed on your system.
-
-
-
 
 pskpetya@gmail.com
 how to uninstall apache2 and dependencies
