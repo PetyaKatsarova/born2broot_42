@@ -5,7 +5,7 @@ copied info from: https://github.com/pasqualerossi/Born2BeRoot-Guide/blob/main/R
 AppArmor is a security framework in Debian that allows for the confinement of processes to specific resources, such as files or network sockets, in order to limit their potential for causing harm. It provides an additional layer of security to the operating system by defining and enforcing policies that restrict the actions that processes can take, thereby reducing the risk of security vulnerabilities being exploited.
 
 
-                            **CONFIG THE VM**
+                            CONFIG THE VM
 
 Part 4.1 - Installing Sudo
 
