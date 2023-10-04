@@ -5,7 +5,7 @@ copied info from: https://github.com/pasqualerossi/Born2BeRoot-Guide/blob/main/R
 AppArmor is a security framework in Debian that allows for the confinement of processes to specific resources, such as files or network sockets, in order to limit their potential for causing harm. It provides an additional layer of security to the operating system by defining and enforcing policies that restrict the actions that processes can take, thereby reducing the risk of security vulnerabilities being exploited.
 
 
-**************** **CONFIG THE VM** ************************
+                            **CONFIG THE VM**
 
 Part 4.1 - Installing Sudo
 
@@ -23,7 +23,7 @@ sudo visudo to open sudoers file
 
 find - # User privilege specification, type your_username      ALL=(ALL) ALL
 
-************* **Installing and Configuring SSH** (Secure Shell Host) *************** 
+                        **Installing and Configuring SSH** (Secure Shell Host)
 
 Type sudo apt install openssh-server
 Type sudo systemctl status ssh to check SSH Server Status
@@ -34,7 +34,7 @@ Save and Exit Vim
 Then type sudo grep Port /etc/ssh/sshd_config to check if the port settings are right
 Lastly type sudo service ssh restart to restart the SSH Service
 
-************* *Installing and Configuring UFW** (Uncomplicated Firewall) ************
+                   **Installing and Configuring UFW** (Uncomplicated Firewall)
 
 First type apt-get install ufw to install UFW
 sudo ufw enable to inable UFW
@@ -43,7 +43,7 @@ sudo ufw allow ssh to configure the Rules
 sudo ufw allow 4242 to configure the Port Rules
 Lastly Type sudo ufw status numbered // to check the status of UFW 4242 Port
 
-*********** **Connecting to SSH** ********
+                   **Connecting to SSH**
 
 Click on your Virtual Machine and select Settings
 Click Network then Adapter 1 then Advanced and then click on Port Forwarding
@@ -55,7 +55,7 @@ Open an iTerm and type the following ssh your_username@127.0.0.1 -p 4242
 In case an error occurs, then type rm ~/.ssh/known_hosts in your iTerm and then retype ssh your_username@127.0.0.1 -p 4242
 Lastly type exit to quit your SSH iTerm Connection
 
-****** **Setting up password policy** ************* 
+                **Setting up password policy**
 
 Fisudo apt-get install libpam-pwquality //install Password Quality Checking Library
 sudo vim /etc/pam.d/common-password
@@ -70,13 +70,13 @@ Find this line. password        requisite        pam_deny.so
  sudo passwd pkatsaro
      sudo chage -l username - check password expire rulessudo
  
- ********* **Creating a Group** ************** 
+           **Creating a Group**
  
 sudo groupadd user42 //  create a group
  sudo groupadd evaluating // create an evaluating group
  getent group // check if the group has been created
 
-******* **Greating User and Assigning to a g**r ***********
+            **Greating User and Assigning to a group**
 
 cut -d: -f1 /etc/passwd // check all local users
 sudo adduser new_username // create a username 
@@ -87,13 +87,13 @@ sudo usermod -aG user42 your_username
 groups // to see which groups the user account belongs to
 chage -l your_new_username // to check if the password rules are working in users
 
-********* **Creating sudo.log** ************
+             **Creating sudo.log**
 
 cd /var/log
 Then type mkdir sudo (if it already exists, then continue to the next step).
 Then type cd sudo && touch sudo.log
 
-******** **Config Sudoers Gr** ********
+             **Config Sudoers Gr**
 
 First type sudo nano /etc/sudoers to go the sudoers file
 Now edit your sudoers file to look like the following by adding in all of the defaults
@@ -106,7 +106,7 @@ Defaults    logfile="/var/log/sudo/sudo.log"
 Defaults    log_input, log_output
 Defaults    requiretty
 
-******* **Crontab config** *********
+           **Crontab config**
 to escape broadcast: ctlr+L
 
 Then type apt-get install -y net-tools to install the netstat tools
