@@ -7,10 +7,14 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
 
 **************** CONFIG THE VM ************************
 
-. Part 4.1 - Installing Sudo
-.. su - to login in as the root user.
-.. apt-get update -y
-.. apt-get upgrade -y
+Part 4.1 - Installing Sudo
+
+su - to login in as the root user.
+
+apt-get update -y
+
+apt-get upgrade -y
+
 .. apt install sudo
 .. usermod -aG sudo your_username to add user in the sudo group (To check if user is in sudo group, type getent group sudo)
 .. sudo visudo to open sudoers file
