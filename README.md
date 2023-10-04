@@ -7,10 +7,8 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
 
 **************** CONFIG THE VM ************************
 
-Part 4.1 - Installing Sudo
-
-su - to login in as the root user.
-
+Part 4.1 - Installing Sudo..
+su - to login in as the root user..
 apt-get update -y
 
 apt-get upgrade -y
