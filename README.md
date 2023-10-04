@@ -5,28 +5,21 @@ copied info from: https://github.com/pasqualerossi/Born2BeRoot-Guide/blob/main/R
 AppArmor is a security framework in Debian that allows for the confinement of processes to specific resources, such as files or network sockets, in order to limit their potential for causing harm. It provides an additional layer of security to the operating system by defining and enforcing policies that restrict the actions that processes can take, thereby reducing the risk of security vulnerabilities being exploited.
 
 
-                            CONFIG THE VM
+  ## CONFIG THE VM
 
-Part 4.1 - Installing Sudo
+### Part 4.1 - Installing Sudo
 
-su - to login in as the root user
-
-apt-get update -y
-
-apt-get upgrade -y
-
-apt install sudo
-
-usermod -aG sudo your_username to add user in the sudo group (To check if user is in sudo group, type getent group sudo)
-
-sudo visudo to open sudoers file
-
-find - # User privilege specification, type your_username      ALL=(ALL) ALL
-
-  lsblk  in vm to see the partition
+1. su - to login in as the root user.
+2. apt-get update -y
+3. apt-get upgrade -y
+4. apt install sudo
+5. usermod -aG sudo your_username to add user in the sudo group (To check if user is in sudo group, type getent group sudo)
+6. sudo visudo to open sudoers file
+7. find - # User privilege specification, type your_username      ALL=(ALL) ALL
+8. lsblk  - to see the partition
   
 
-                        Installing and Configuring SSH (Secure Shell Host)
+  ## Installing and Configuring SSH (Secure Shell Host)
 
 Type sudo apt install openssh-server
 Type sudo systemctl status ssh to check SSH Server Status
