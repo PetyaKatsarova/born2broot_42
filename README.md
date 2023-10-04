@@ -22,8 +22,10 @@ usermod -aG sudo your_username to add user in the sudo group (To check if user i
 sudo visudo to open sudoers file
 
 find - # User privilege specification, type your_username      ALL=(ALL) ALL
+  lsblk  in vm to see the partition
+  
 
-                        **Installing and Configuring SSH** (Secure Shell Host)
+                        Installing and Configuring SSH (Secure Shell Host)
 
 Type sudo apt install openssh-server
 Type sudo systemctl status ssh to check SSH Server Status
