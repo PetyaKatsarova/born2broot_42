@@ -71,13 +71,13 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
  11. sudo passwd pkatsaro
  12. sudo chage -l username - check password expire rulessudo
  
-     ## Creating a Group
+     ## 6.2 - Creating a Group
  
-sudo groupadd user42 //  create a group
- sudo groupadd evaluating // create an evaluating group
- getent group // check if the group has been created
+1. sudo groupadd user42 //  create a group
+2. sudo groupadd evaluating // create an evaluating group
+3. getent group // check if the group has been created
 
-            **Greating User and Assigning to a group**
+      ## Part 6.3 - Greating User and Assigning to a group
 
 cut -d: -f1 /etc/passwd // check all local users
 sudo adduser new_username // create a username 
