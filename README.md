@@ -4,7 +4,7 @@ copied info from: https://github.com/pasqualerossi/Born2BeRoot-Guide/blob/main/R
 
 AppArmor is a security framework in Debian that allows for the confinement of processes to specific resources, such as files or network sockets, in order to limit their potential for causing harm. It provides an additional layer of security to the operating system by defining and enforcing policies that restrict the actions that processes can take, thereby reducing the risk of security vulnerabilities being exploited.
 
-
+#### download and install oracle vm box, download debian latest iso, create new vm in vm box
   ## CONFIG THE VM
 
 ### Part 4.1 - Installing Sudo
@@ -17,6 +17,7 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
 6. sudo visudo to open sudoers file
 7. find - # User privilege specification, type your_username      ALL=(ALL) ALL
 8. lsblk  - to see the partition
+9. getent group sudo // check all users in group sudo
 
   ### Part 4.2 - Installing Git and Vim
 
