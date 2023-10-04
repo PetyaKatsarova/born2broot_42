@@ -24,54 +24,54 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
 1. apt-get install git -y // to install Git
 2. git --version //to check the Git Version
 
-  ## Installing and Configuring SSH (Secure Shell Host)
+  ## Part 4.3 Installing and Configuring SSH (Secure Shell Host)
 
-Type sudo apt install openssh-server
-Type sudo systemctl status ssh to check SSH Server Status
-Type sudo vim /etc/ssh/sshd_config
-Find this line #Port22
-Change the line to Port 4242 without the # (Hash) in front of it
-Save and Exit Vim
-Then type sudo grep Port /etc/ssh/sshd_config to check if the port settings are right
-Lastly type sudo service ssh restart to restart the SSH Service
+1. sudo apt install openssh-server
+2. sudo systemctl status ssh //to check SSH Server Status
+3. `sudo vim /etc/ssh/sshd_config
+4. Find this line `#Port22` 
+5. Change the line to `Port 4242` without the # (Hash) in front of it
+6. Save and Exit Vim 
+7. sudo grep Port /etc/ssh/sshd_config //to check if the port settings are right
+8. sudo service ssh restart //to restart the SSH Service 
 
-                   **Installing and Configuring UFW** (Uncomplicated Firewall)
+  ## Part 4.4 - Installing and Configuring UFW** (Uncomplicated Firewall)
 
-First type apt-get install ufw to install UFW
-sudo ufw enable to inable UFW
-sudo ufw status numbered to check the status of UFW
-sudo ufw allow ssh to configure the Rules
-sudo ufw allow 4242 to configure the Port Rules
-Lastly Type sudo ufw status numbered // to check the status of UFW 4242 Port
+1. apt-get install ufw //to install UFW
+2. sudo ufw enable// to inable UFW
+3. sudo ufw status numbered //to check the status of UFW
+4. sudo ufw allow ssh //to configure the Rules
+5. sudo ufw allow 4242 //to configure the Port Rule
+6. sudo ufw status numbered // to check the status of UFW 4242 Port
 
-                   **Connecting to SSH**
+  ## Part 5 - Connecting to SSH
 
-Click on your Virtual Machine and select Settings
-Click Network then Adapter 1 then Advanced and then click on Port Forwarding
-Change the Host Port and Guest Port to 4242
-Then head back to your Virtual Machine
-sudo systemctl restart ssh to restart your SSH Server
-sudo service sshd status to check your SSH Status
-Open an iTerm and type the following ssh your_username@127.0.0.1 -p 4242
-In case an error occurs, then type rm ~/.ssh/known_hosts in your iTerm and then retype ssh your_username@127.0.0.1 -p 4242
-Lastly type exit to quit your SSH iTerm Connection
+1. Click on your Virtual Machine and select Settings
+2. Click Network then Adapter 1 then Advanced and then click on Port Forwarding
+3. Change the Host Port and Guest Port to 4242
+4. Then back to your Virtual Machine
+5. sudo systemctl restart ssh //to restart your SSH Server
+6. sudo service sshd status //to check your SSH Status
+7. Open the terminal in your windows/mac/linux and type the following ssh your_username@127.0.0.1 -p 4242
+8. In case an error occurs, then type rm ~/.ssh/known_hosts in your iTerm and then retype ssh your_username@127.0.0.1 -p 4242
+9. exit //to quit your SSH iTerm Connection
 
-                **Setting up password policy**
+  ## Part 6.1 - Setting up password policy
 
-Fisudo apt-get install libpam-pwquality //install Password Quality Checking Library
-sudo vim /etc/pam.d/common-password
-Find this line. password        requisite        pam_deny.so
- The line should now look like this - password  requisite     pam_pwquality.so  retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
- Save and Exit Vim
- sudo vim /etc/login.defs
- Find this part PASS_MAX_DAYS 9999 PASS_MIN_DAYS 0 PASS_WARN_AGE 7
- Change that part to PASS_MAX_DAYS 30 and PASS_MIN_DAYS 2 keep PASS_WARN_AGE 7 as the same
- sudo reboot // reboot the change affects
- // change password:
- sudo passwd pkatsaro
-     sudo chage -l username - check password expire rulessudo
+1. sudo apt-get install libpam-pwquality //install Password Quality Checking Library
+2. sudo vim /etc/pam.d/common-password
+3. Find this line: password        requisite        pam_deny.so
+4. The line should now look like this - password  requisite     pam_pwquality.so  retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
+ 5. Save and Exit Vim
+ 6. sudo vim /etc/login.defs
+ 7. Find this part PASS_MAX_DAYS 9999 PASS_MIN_DAYS 0 PASS_WARN_AGE 7
+ 8. Change that part to PASS_MAX_DAYS 30 and PASS_MIN_DAYS 2 keep PASS_WARN_AGE 7 as the same
+ 9. sudo reboot // reboot the change affects
+ 10. change password:
+ 11. sudo passwd pkatsaro
+ 12. sudo chage -l username - check password expire rulessudo
  
-           **Creating a Group**
+     ## Creating a Group
  
 sudo groupadd user42 //  create a group
  sudo groupadd evaluating // create an evaluating group
