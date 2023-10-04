@@ -17,7 +17,11 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
 6. sudo visudo to open sudoers file
 7. find - # User privilege specification, type your_username      ALL=(ALL) ALL
 8. lsblk  - to see the partition
-  
+
+  ### Part 4.2 - Installing Git and Vim
+
+1. apt-get install git -y // to install Git
+2. git --version //to check the Git Version
 
   ## Installing and Configuring SSH (Secure Shell Host)
 
