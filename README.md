@@ -153,14 +153,15 @@ wall "    #Architecture: $arc
      exit to exit the iTerm SSH Login.
     go back to your Virtual Machine (not iTerm) and continue on with the steps below.
     10. sudo visudo //to open your sudoers file
-    11. Add in this line your_username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh under where its written %sudo ALL=(ALL:ALL) ALL
-    
+    11. Add bellow # Allow memebers of group sudo to execute any command
+    %sudo ALL=(ALL:ALL) ALL
+    petya ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
     12. exit and save your sudoers file
     13. sudo reboot in your Virtual Machine to reboot sudo
     14. sudo /usr/local/bin/monitoring.sh to execute your script as su (super user)
     15. sudo crontab -u root -e to open the crontab and add the rule
     16. at the end of the crontab, type the following
-    @reboot /bin/sh -c "sleep 20 && /full/path/to/your/script.shcao    
+    @reboot /bin/sh -c "sleep 20 && /full/path/to/your/script.shcao"    
     */10 * * * * /usr/local/bin/monitoring.sh this means that every 10 mins, this script will show
     
     ## Part 7 - Signature.txt
@@ -222,6 +223,7 @@ pskpetya@gmail.com
 how to check if i have uninstalled lighttpd
 To check if you have uninstalled Lighttpd on Debian, you can use the following command:
 
+lighttpd (pronounced "lighty") is a lightweight web server software optimized for speed-critical environments, offering a balance between performance, security, flexibility, and low resource usage. It's been designed specifically to be used in situations where other web servers, such as Apache, might consume too many resources.
 dpkg -l | grep lighttpd
 This will return information about all installed packages that have the word "lighttpd" in their name. If Lighttpd is not installed, the command will return an empty result. You can also check the Lighttpd service status using the following command:
 
@@ -241,20 +243,14 @@ This will remove the Lighttpd web server, the mod_deflate module for HTTP respon
 sudo apt-get remove --purge lighttpd lighttpd-mod-deflate lighttpd-mod-openssl
 
 
-
-pskpetya@gmail.com
-whats the command to check if apache is installed on my debian
 You can use the following command to check if Apache is installed on your Debian system:
 
 dpkg -l | grep apache2
 If Apache is installed, you will see output similar to this:
 
-Copy code
 ii  apache2                         2.4.25-3+deb9u7                amd64        Apache HTTP Server
 If you don't see any output, then Apache is not installed on your system.
 
-pskpetya@gmail.com
-how to uninstall apache2 and dependencies
 To uninstall Apache2 and its dependencies on Debian, you can use the following command:
 
 sudo apt-get remove apache2
@@ -264,11 +260,6 @@ sudo apt-get --purge remove apache2
 Note: Before uninstalling Apache2, make sure that there is no critical data stored in the web root directory or in the Apache configuration files. It's always a good idea to backup any important data before making changes to your system.
 
 
-
-
-pskpetya@gmail.com
-how to uninstall those: ii  apache2-bin                    2.4.54-1~deb11u1               amd64        Apache HTTP Server (modules and other binary files)
-ii  libapache2-mod-php7.4          7.4.33-1+deb11u1               amd64        server-side, HTML-embedded scripting language (Apache 2 module)
 To uninstall Apache2 and its dependencies on Debian, you can use the following command:
 
 sudo apt-get remove apache2-bin libapache2-mod-php7.4
@@ -276,10 +267,6 @@ This will remove the Apache2 binary package (apache2-bin) and the libapache2-mod
 
 sudo apt-get purge apache2-bin libapache2-mod-php7.4
 
-
-
-pskpetya@gmail.com
-how to set up on my vm on debian: • Set up a functional WordPress website with the following services: lighttpd, MariaDB, and PHP. 
 To set up a functional WordPress website with lighttpd, MariaDB, and PHP on a Debian-based system, you can follow these steps:
 
 Install lighttpd, MariaDB, and PHP:
