@@ -35,7 +35,7 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
 7. sudo grep Port /etc/ssh/sshd_config //to check if the port settings are right
 8. sudo service ssh restart //to restart the SSH Service 
 
-  ## Part 4.4 - Installing and Configuring UFW** (Uncomplicated Firewall)
+  ## Part 4.4 - Installing and Configuring UFW (Uncomplicated Firewall)
 
 1. apt-get install ufw //to install UFW
 2. sudo ufw enable// to inable UFW
@@ -77,27 +77,27 @@ AppArmor is a security framework in Debian that allows for the confinement of pr
 2. sudo groupadd evaluating // create an evaluating group
 3. getent group // check if the group has been created
 
-      ## Part 6.3 - Greating User and Assigning to a group
+   ## Part 6.3 - Greating User and Assigning to a group
 
-cut -d: -f1 /etc/passwd // check all local users
-sudo adduser new_username // create a username 
-sudo usermod -aG user42 your_username
- sudo usermod -aG evaluating your_new_username
- getent group user42 // check if the user is the group
- getent group evaluating // check the group
-groups // to see which groups the user account belongs to
-chage -l your_new_username // to check if the password rules are working in users
+1. cut -d: -f1 /etc/passwd // check all local users
+2. sudo adduser new_username // create a username 
+3. sudo usermod -aG user42 your_username
+4. sudo usermod -aG evaluating your_new_username
+5. getent group user42 // check if the user is the group
+6. getent group evaluating // check the group
+7. groups // to see which groups the user account belongs to
+8. chage -l your_new_username // to check if the password rules are working in users
 
-             **Creating sudo.log**
+   ## Part 6.4 - Creating sudo.log
 
-cd /var/log
-Then type mkdir sudo (if it already exists, then continue to the next step).
-Then type cd sudo && touch sudo.log
+1. cd /var/log
+2. mkdir sudo (if it already exists, then continue to the next step).
+3. cd sudo && touch sudo.log
 
-             **Config Sudoers Gr**
+   ### Part 6.4.1 - Config Sudoers Gr
 
-First type sudo nano /etc/sudoers to go the sudoers file
-Now edit your sudoers file to look like the following by adding in all of the defaults
+1. sudo nano /etc/sudoers //to go the sudoers file
+2. Now edit your sudoers file to look like the following by adding in all of the defaults
 Defaults    env_reset
 Defaults    mail_badpass
 Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
@@ -107,13 +107,12 @@ Defaults    logfile="/var/log/sudo/sudo.log"
 Defaults    log_input, log_output
 Defaults    requiretty
 
-           **Crontab config**
-to escape broadcast: ctlr+L
-
-Then type apt-get install -y net-tools to install the netstat tools
-Then type cd /usr/local/bin/
-Then type touch monitoring.sh
-Lastly type chmod 777 monitoring.sh
+   ### Part 6.5 - Crontab config
+1. to escape broadcast: ctlr+L
+2. apt-get install -y net-tools //to install the netstat tools
+3. cd /usr/local/bin/
+4. touch monitoring.sh
+5. chmod 777 monitoring.sh
 the text bellow is the script: 
 
 #!/bin/bash
@@ -147,32 +146,34 @@ wall "    #Architecture: $arc
     #Network: IP $ip ($mac)
     #Sudo: $cmds cmd"
     
-    Then open up a iTerm2 seperate from your Virtual Machine and type in iTerm ssh your_host_name42@127.0.0.1 -p 4242 and then type your password, when it asks for it.
-    Then type cd /usr/local/bin.
-    Then type nano monitoring.sh and paste the text above into the vim monitoring.sh you just created, by doing command + v on your Apple keyboard.
-    Save and Exit your monitoring.sh
-    5.1 - Then type exit to exit the iTerm SSH Login.
-    5.2 - Then go back to your Virtual Machine (not iTerm) and continue on with the steps below.
-    Then type sudo visudo to open your sudoers file
-    Add in this line your_username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh under where its written %sudo ALL=(ALL:ALL) ALL
+    6. open up a iTerm2 seperate from your Virtual Machine and type in iTerm ssh your_host_name42@127.0.0.1 -p 4242 and then type your password, when it asks for it.
+    7. cd /usr/local/bin.
+     8. nano monitoring.sh and paste the text above into the vim monitoring.sh you just created, by doing command + v on your Apple keyboard.
+    9. Save and Exit your monitoring.sh
+     exit to exit the iTerm SSH Login.
+    go back to your Virtual Machine (not iTerm) and continue on with the steps below.
+    10. sudo visudo //to open your sudoers file
+    11. Add in this line your_username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh under where its written %sudo ALL=(ALL:ALL) ALL
     
-    Then exit and save your sudoers file
-    Now type sudo reboot in your Virtual Machine to reboot sudo
-    Type sudo /usr/local/bin/monitoring.sh to execute your script as su (super user)
-    Type sudo crontab -u root -e to open the crontab and add the rule
-    Lastly at the end of the crontab, type the following
+    12. exit and save your sudoers file
+    13. sudo reboot in your Virtual Machine to reboot sudo
+    14. sudo /usr/local/bin/monitoring.sh to execute your script as su (super user)
+    15. sudo crontab -u root -e to open the crontab and add the rule
+    16. at the end of the crontab, type the following
     @reboot /bin/sh -c "sleep 20 && /full/path/to/your/script.shcao    
     */10 * * * * /usr/local/bin/monitoring.sh this means that every 10 mins, this script will show
     
-    ****** *Signature.txt* ******
+    ## Part 7 - Signature.txt
  
- close the machine.
- cd sgoinfre/students/<your_intra_username>/VirtualBox VMs
-Type shasum yourdiskname.vdi or whatever your Virtual Machine is called (This can take from a few seconds to 5 mins).
-Copy the output number and create a signature.txt file and paste that number in the file.
-Now you submit the signature.txt file with the output number in it.
+⚠️ Warning: before you generate a signature number, turn off your Virtual Machine. ⚠️
+
+1. Open iTerm and type `cd`
+1. Then type `cd sgoinfre/students/<your_intra_username>/VirtualBox VMs`
+2. Type `shasum VirtualBox.vdi` or whatever your Virtual Machine is called (This can take from a few seconds to 5 mins).
+3. Copy the output number and create a signature.txt file and paste that number in the file. 
+3. Now you submit the signature.txt file with the output number in it. 
     
-    ****** **REFERENCE COMMANDS:** ********
+    ### REFERENCE COMMANDS:
     
     sudo ufw status
     sudo systemctl status ssh
@@ -207,7 +208,7 @@ Now you submit the signature.txt file with the output number in it.
     // switch to different account
     su other_user // enter passwd for other user
     
-// **bonus**
+## BONUS
 
 You can uninstall all the listed packages by running the following command as root:
 
